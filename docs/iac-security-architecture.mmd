@@ -1,0 +1,17 @@
+flowchart TB
+  A[Git pull request] --> B[Pre-commit: fmt / validate / lint]
+  B --> C[Policy gates
+OPA / Sentinel / tfsec]
+  C --> D[Terraform plan
+reviewed artifact]
+  D --> E[Remote encrypted state
+versioned + locked]
+  E --> F[Terraform apply
+least-privilege CI role]
+  F --> G[AWS foundation
+VPC / SG / EC2 / S3]
+  G --> H[Ansible inventory]
+  H --> I[Idempotent hardening
+common / security / compliance]
+  I --> J[Compliance report + evidence]
+  J --> K[Drift detection / rollback]

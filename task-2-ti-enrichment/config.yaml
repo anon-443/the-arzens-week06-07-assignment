@@ -1,0 +1,12 @@
+# Copy to a local file and replace placeholders through environment variables.
+# The program prefers VT_API_KEY, ABUSEIPDB_API_KEY, and OTX_API_KEY.
+virustotal:
+  api_key: "${VT_API_KEY}"
+  requests_per_minute: 4
+abuseipdb:
+  api_key: "${ABUSEIPDB_API_KEY}"
+  requests_per_day: 1000
+otx:
+  api_key: "${OTX_API_KEY}"
+cache_ttl_seconds: 3600
+timeout_seconds: 12

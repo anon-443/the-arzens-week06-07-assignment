@@ -1,0 +1,11 @@
+Terraform will perform the following actions:
+
+  # aws_vpc.main will be created
+  # aws_subnet.public will be created
+  # aws_security_group.web will be created with ingress 22 from admin CIDRs, 80/443 from the Internet
+  # aws_instance.web will be created with encrypted root volume and IMDSv2 required
+  # aws_s3_bucket.evidence will be created as a private, encrypted, versioned bucket
+
+Plan: 5 to add, 0 to change, 0 to destroy.
+
+Note: This is a representative sample plan. Run terraform init and terraform plan with real variables before deployment.

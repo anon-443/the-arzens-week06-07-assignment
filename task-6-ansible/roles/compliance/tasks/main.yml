@@ -1,0 +1,25 @@
+---
+- name: Check SSH root login
+  ansible.builtin.command: sshd -T
+  register: sshd_effective
+  changed_when: false
+- name: Check UFW status
+  ansible.builtin.command: ufw status
+  register: ufw_status
+  changed_when: false
+- name: Check auditd service
+  ansible.builtin.command: systemctl is-active auditd
+  register: auditd_status
+  changed_when: false
+- name: Write compliance report
+  ansible.builtin.copy:
+    dest: "{{ playbook_dir }}/compliance_report.txt"
+    mode: '0644'
+    delegate_to: localhost
+    content: |
+      ARZENS COMPLIANCE REPORT
+      Host: {{ inventory_hostname }}
+      SSH PermitRootLogin no: {{ 'PASS' if 'permitrootlogin no' in sshd_effective.stdout else 'FAIL' }}
+      SSH PasswordAuthentication no: {{ 'PASS' if 'passwordauthentication no' in sshd_effective.stdout else 'FAIL' }}
+      UFW active: {{ 'PASS' if 'Status: active' in ufw_status.stdout else 'FAIL' }}
+      auditd active: {{ 'PASS' if auditd_status.stdout.strip() == 'active' else 'FAIL' }}

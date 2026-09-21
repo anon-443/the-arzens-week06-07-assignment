@@ -1,0 +1,2 @@
+indicator,type,risk_score,confidence,sources,errors,queried_at
+8.8.8.8,ipv4,0,0.0,,offline mode,2026-09-21T00:00:00+00:00

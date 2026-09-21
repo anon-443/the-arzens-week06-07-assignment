@@ -1,0 +1,17 @@
+flowchart LR
+  A[Internal telemetry
+SIEM / EDR / DNS / Proxy] --> B[IOC intake & normalization]
+  X[External feeds
+VirusTotal / AbuseIPDB / OTX / MISP] --> B
+  B --> C[Enrichment engine
+rate limiter + cache + retries]
+  C --> D[(IOC database
+metadata + history + TTL)]
+  D --> E[Risk & confidence scoring]
+  E --> F{Workflow policy}
+  F -->|high risk| G[SIEM alert / blocklist]
+  F -->|needs review| H[Case management / analyst queue]
+  F -->|low confidence| I[Quarantine / suppress]
+  D --> J[Expiration & health scheduler]
+  J --> C
+  K[MISP event sharing] <--> D

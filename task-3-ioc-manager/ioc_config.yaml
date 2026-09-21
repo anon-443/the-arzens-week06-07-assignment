@@ -1,0 +1,5 @@
+database: ioc_database.json
+expiration_days: 30
+high_confidence_days: 90
+blocklist_min_score: 80
+blocklist_min_confidence: 0.65

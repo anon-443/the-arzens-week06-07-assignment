@@ -1,0 +1,7 @@
+---
+- name: Apply security controls only
+  hosts: all
+  become: true
+  roles:
+    - security
+    - compliance

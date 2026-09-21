@@ -1,0 +1,5 @@
+indicator,type
+8.8.8.8,ipv4
+1.1.1.1,ipv4
+example.com,domain
+44d88612fea8a8f36de82e1278abb02f,hash

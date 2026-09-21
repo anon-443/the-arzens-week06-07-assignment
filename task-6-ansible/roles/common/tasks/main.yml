@@ -1,0 +1,25 @@
+---
+- name: Update apt cache and packages
+  ansible.builtin.apt:
+    update_cache: true
+    upgrade: dist
+    cache_valid_time: 3600
+- name: Install baseline packages
+  ansible.builtin.apt:
+    name: [unattended-upgrades, rsyslog, auditd, curl]
+    state: present
+- name: Set timezone
+  community.general.timezone:
+    name: UTC
+- name: Enable rsyslog
+  ansible.builtin.service:
+    name: rsyslog
+    enabled: true
+    state: started
+- name: Configure unattended upgrades
+  ansible.builtin.copy:
+    dest: /etc/apt/apt.conf.d/20auto-upgrades
+    mode: '0644'
+    content: |
+      APT::Periodic::Update-Package-Lists "1";
+      APT::Periodic::Unattended-Upgrade "1";

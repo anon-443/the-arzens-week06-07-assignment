@@ -1,0 +1,6 @@
+ARZENS COMPLIANCE REPORT
+Host: sample-host
+SSH PermitRootLogin no: PASS
+SSH PasswordAuthentication no: PASS
+UFW active: PASS
+auditd active: PASS

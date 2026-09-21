@@ -1,0 +1,5 @@
+aws_region = "us-east-1"
+project = "arzens-secure"
+admin_cidr_blocks = ["203.0.113.10/32"]
+key_name = "replace-with-existing-key-pair"
+evidence_bucket_name = "replace-with-globally-unique-private-name"

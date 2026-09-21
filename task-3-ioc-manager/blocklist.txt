@@ -1,0 +1,1 @@
+# Sample SIEM blocklist export — no high-confidence sample IOCs
